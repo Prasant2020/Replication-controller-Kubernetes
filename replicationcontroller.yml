@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: pod1
+  labels:
+    app: webserver1
+    type: cluster
+spec:
+  replicas: 5
+  selector:
+    app: webserver2
+  template:
+    metadata:
+      name: pod3
+      labels:
+        app: webserver2
+    spec:
+     containers:
+     - name: container1
+       image: nginx
+       ports:
+       - containerPort: 80
